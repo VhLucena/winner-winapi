@@ -10,11 +10,11 @@ namespace Winap.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        // GET api/values
+        // GET api/value
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] {"value1", "value2"};
+            return new string[] {"oiii", "estou aqui"};
         }
 
         // GET api/values/5
