@@ -1,11 +1,10 @@
 
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Winap.Exceptions;
 using Winap.Models;
+using Winap.Services;
 
 namespace Winap.Controllers
 {
@@ -13,37 +12,30 @@ namespace Winap.Controllers
     [ApiController]
     public class PersonController : ControllerBase
     {
-        private readonly WinapiContext _context;
+        private readonly PersonService _personService;
 
-        public PersonController(WinapiContext context)
+        public PersonController(PersonService personService)
         {
-            _context = context;
-
-            if (_context.Persons.Count() != 0) return;
-            
-            _context.Persons.Add(new Person {Name = "Beatriz Akemy", Age = 26});
-            _context.SaveChanges();
+            _personService = personService;
         }
         
-        // GET: winapi/all
+        // GET: winapi/person/all
         [HttpGet("all")]
-        public async Task<ActionResult<IEnumerable<Person>>> GetPersons()
+        public  ActionResult<List<Person>> GetPersons()
         {
-            return await _context.Persons.ToListAsync();
+            return _personService.GetAllPersons();
         }
 
         // GET: winapi/{id}
         [HttpGet("{id}")]
-        public async Task<ActionResult<Person>> GetPersonById(int id)
+        public ActionResult<Person> GetPersonById(int id)
         {
             if (id < 0)
             {
                 throw new InvalidIdException("The ID must be equal or greater than zero.");
             }
-            
-            var person = await _context.Persons.FindAsync(id);
 
-            return person == null ? (ActionResult<Person>) NotFound() : person;
+            return _personService.GetById(id);
         }
     }
 }
