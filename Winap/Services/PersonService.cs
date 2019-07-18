@@ -25,7 +25,7 @@ namespace Winap.Services
 
         public Person GetById(int id)
         {
-            return _persons.Find<Person>(person => person.Id == id).FirstOrDefault();
+            return _persons.Find(person => person.Id == id).FirstOrDefault();
         }
 
         public Person Create(Person person)
