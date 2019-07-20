@@ -1,8 +1,10 @@
+using System;
 using Winap.Models.Interfaces;
 using MongoDB.Driver;
 using System.Collections.Generic;
 using System.Linq;
 using Winap.Models;
+using Person = Winap.Models.Person;
 
 namespace Winap.Services
 {
@@ -23,25 +25,25 @@ namespace Winap.Services
             return _persons.Find(person => true).ToList();
         }
 
-        public Person GetById(int id)
+        public Person GetById(Int32 id)
         {
-            return _persons.Find(person => person.Id == id).FirstOrDefault();
+            return _persons.Find(person => person.id == id.ToString()).FirstOrDefault();
         }
 
-        public Person Create(Person person)
+        public IPerson Create(IPerson person)
         {
-            _persons.InsertOne(person);
+            _persons.InsertOne((Person)person);
             return person;
         }
 
-        public void Update(int id, Person newPerson)
+        public void Update(Int32 id, Person newPerson)
         {
-            _persons.ReplaceOne(person => person.Id == id, newPerson);
+            _persons.ReplaceOne(person => person.id == id.ToString(), newPerson);
         }
 
-        public void Remove(int id)
+        public void Remove(Int32 id)
         {
-            _persons.DeleteOne(person => person.Id == id);
+            _persons.DeleteOne(person => person.id == id.ToString());
         }
 
     }

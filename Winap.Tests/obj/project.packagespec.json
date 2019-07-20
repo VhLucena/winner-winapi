@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "/Users/viniciuslucena/Work/winner-winapi/Winap/Winap.csproj",
-    "projectName": "Winap",
-    "projectPath": "/Users/viniciuslucena/Work/winner-winapi/Winap/Winap.csproj",
-    "outputPath": "/Users/viniciuslucena/Work/winner-winapi/Winap/obj/",
+    "projectUniqueName": "/Users/viniciuslucena/Work/winner-winapi/Winap.Tests/Winap.Tests.csproj",
+    "projectName": "Winap.Tests",
+    "projectPath": "/Users/viniciuslucena/Work/winner-winapi/Winap.Tests/Winap.Tests.csproj",
+    "outputPath": "/Users/viniciuslucena/Work/winner-winapi/Winap.Tests/obj/",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -17,7 +17,11 @@
     },
     "frameworks": {
       "netcoreapp2.2": {
-        "projectReferences": {}
+        "projectReferences": {
+          "/Users/viniciuslucena/Work/winner-winapi/Winap/Winap.csproj": {
+            "projectPath": "/Users/viniciuslucena/Work/winner-winapi/Winap/Winap.csproj"
+          }
+        }
       }
     },
     "warningProperties": {
@@ -33,21 +37,9 @@
           "target": "Package",
           "version": "[2.2.0, )"
         },
-        "Microsoft.AspNetCore.HttpsPolicy": {
+        "Microsoft.NET.Test.Sdk": {
           "target": "Package",
-          "version": "[2.2.0, )"
-        },
-        "Microsoft.AspNetCore.Mvc": {
-          "target": "Package",
-          "version": "[2.2.0, )"
-        },
-        "Microsoft.EntityFrameworkCore": {
-          "target": "Package",
-          "version": "[2.2.6, )"
-        },
-        "Microsoft.EntityFrameworkCore.InMemory": {
-          "target": "Package",
-          "version": "[2.2.6, )"
+          "version": "[15.9.0, )"
         },
         "Microsoft.NETCore.App": {
           "suppressParent": "All",
@@ -55,9 +47,17 @@
           "version": "[2.2.0, )",
           "autoReferenced": true
         },
-        "MongoDB.Driver": {
+        "Moq": {
           "target": "Package",
-          "version": "[2.8.1, )"
+          "version": "[4.12.0, )"
+        },
+        "NUnit3TestAdapter": {
+          "target": "Package",
+          "version": "[3.11.0, )"
+        },
+        "nunit": {
+          "target": "Package",
+          "version": "[3.11.0, )"
         }
       },
       "imports": [

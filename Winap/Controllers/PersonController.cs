@@ -1,9 +1,12 @@
 
+using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Winap.Exceptions;
 using Winap.Models;
+using Winap.Models.Interfaces;
 using Winap.Services;
 
 namespace Winap.Controllers
@@ -26,9 +29,9 @@ namespace Winap.Controllers
             return _personService.GetAllPersons();
         }
 
-        // GET: winapi/{id}
+        // GET: winapi/person/{id}
         [HttpGet("{id}")]
-        public ActionResult<Person> GetPersonById(int id)
+        public ActionResult<Person> GetPersonById(Int32 id)
         {
             if (id < 0)
             {
@@ -36,6 +39,14 @@ namespace Winap.Controllers
             }
 
             return _personService.GetById(id);
+        }
+        
+        // CREATE: winapi/person
+        [HttpPost()] 
+        public ActionResult<HttpStatusCode> CreatePerson(IPerson person)
+        {
+            _personService.Create(person);
+            return HttpStatusCode.Created;
         }
     }
 }
