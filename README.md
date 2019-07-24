@@ -15,8 +15,8 @@ The System Context Diagram shows the big picture of any Software application.
 
 ## Container Diagram 
 The Container Diagram shows some detail of the System, exposing the internal Containers (APIs, Web Site, Database etc).
-![The Container Diagram](Images/2 _Container.png)
+![The Container Diagram](Images/2_Container.png)
 
 ## Component Diagram of the Winapi
 The Component Diagram shows more detail of some components. The bellow picture shows the internal details of the Winapi Component. You can see that the Winapi uses different controllers for different kinds of data.
-![The Component Diagram of the Winapi](Images/3_ Components.png)
+![The Component Diagram of the Winapi](Images/3_Components.png)
