@@ -9,9 +9,14 @@ The Winapi is the api that consumes the database. The Winapi is written using [A
 
 The Database technology chosen was [MongoDB](https://www.mongodb.com/), which is Non-Relational database model.
 
-## The Winner Overview
+## System Context Diagram
+The System Context Diagram shows the big picture of any Software application.
+![The System Context Diagram](Images/1_SystemContext.png)
 
-![The Winner overview](Images/Winner.png)
+## Container Diagram 
+The Container Diagram shows some detail of the System, exposing the internal Containers (APIs, Web Site, Database etc).
+![The Container Diagram](Images/2 _Container.png)
 
-The figure above summary the Winner project at this moment.
-
+## Component Diagram of the Winapi
+The Component Diagram shows more detail of some components. The bellow picture shows the internal details of the Winapi Component. You can see that the Winapi uses different controllers for different kinds of data.
+![The Component Diagram of the Winapi](Images/3_ Components.png)
