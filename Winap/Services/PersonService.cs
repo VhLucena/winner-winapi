@@ -1,50 +1,55 @@
 using System;
-using Winap.Models.Interfaces;
-using MongoDB.Driver;
 using System.Collections.Generic;
-using System.Linq;
-using Winap.Models;
-using Person = Winap.Models.Person;
+using Microsoft.AspNetCore.Http;
+using MongoDB.Driver;
+using Winap.Models.Interfaces;
 
 namespace Winap.Services
 {
     public class PersonService
     {
-        private readonly IMongoCollection<Person> _persons;
-
+        private readonly IMongoCollection<IPerson> _persons;
+        private readonly IMongoDatabase _database;
+        private readonly string _collectionName;
+        
         public PersonService(IWinnerDatabaseSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
-            var database = client.GetDatabase(settings.DatabaseName);
+            _database = client.GetDatabase(settings.DatabaseName);
 
-            _persons = database.GetCollection<Person>(settings.WinnerCollectionName);
+            _persons = _database.GetCollection<IPerson>(settings.CollectionName);
+            _collectionName = settings.CollectionName;
         }
 
-        public List<Person> GetAllPersons()
+        public List<IPerson> GetAllPersons()
         {
             return _persons.Find(person => true).ToList();
         }
 
-        public Person GetById(Int32 id)
+        public IPerson GetById(IFormattable id)
         {
-            return _persons.Find(person => person.id == id.ToString()).FirstOrDefault();
+            return _persons.Find(person => person.Id == id.ToString()).FirstOrDefault();
         }
 
         public IPerson Create(IPerson person)
         {
-            _persons.InsertOne((Person)person);
+            _persons.InsertOne(person);
             return person;
         }
 
-        public void Update(Int32 id, Person newPerson)
+        public void Update(IFormattable id, IPerson newPerson)
         {
-            _persons.ReplaceOne(person => person.id == id.ToString(), newPerson);
+            _persons.ReplaceOne(person => person.Id == id.ToString(), newPerson);
         }
 
-        public void Remove(Int32 id)
+        public void Remove(IFormattable id)
         {
-            _persons.DeleteOne(person => person.id == id.ToString());
+            _persons.DeleteOne(person => person.Id == id.ToString());
         }
 
+        public void ClearCollection()
+        {
+            _database.DropCollection(_collectionName);
+        }
     }
 }
