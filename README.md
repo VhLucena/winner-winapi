@@ -11,12 +11,12 @@ The Database technology chosen was [MongoDB](https://www.mongodb.com/), which is
 
 ## System Context Diagram
 The System Context Diagram shows the big picture of any Software application.
-![The System Context Diagram](Images/1_SystemContext.png)
+![The System Context Diagram](Architecture/Images/1_SystemContext.png)
 
 ## Container Diagram 
 The Container Diagram shows some detail of the System, exposing the internal Containers (APIs, Web Site, Database etc).
-![The Container Diagram](Images/2_Container.png)
+![The Container Diagram](Architecture/Images/2_Container.png)
 
 ## Component Diagram of the Winapi
 The Component Diagram shows more detail of some components. The bellow picture shows the internal details of the Winapi Component. You can see that the Winapi uses different controllers for different kinds of data.
-![The Component Diagram of the Winapi](Images/3_Components.png)
+![The Component Diagram of the Winapi](Architecture/Images/3_Components.png)
