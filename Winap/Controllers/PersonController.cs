@@ -1,9 +1,13 @@
 
+using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Winap.Exceptions;
 using Winap.Models;
+using Winap.Models.Interfaces;
 using Winap.Services;
 
 namespace Winap.Controllers
@@ -21,21 +25,26 @@ namespace Winap.Controllers
         
         // GET: winapi/person/all
         [HttpGet("all")]
-        public  ActionResult<List<Person>> GetPersons()
+        public  ActionResult<List<IPerson>> GetPersons()
         {
             return _personService.GetAllPersons();
         }
-
-        // GET: winapi/{id}
-        [HttpGet("{id}")]
-        public ActionResult<Person> GetPersonById(int id)
+        
+        
+        // CREATE: winapi/person
+        [HttpPost()] 
+        public int CreatePerson(IPerson person)
         {
-            if (id < 0)
+            try
             {
-                throw new InvalidIdException("The ID must be equal or greater than zero.");
+                _personService.Create(person);
             }
-
-            return _personService.GetById(id);
+            catch (Exception)
+            {
+                return StatusCodes.Status400BadRequest;
+            }
+            
+            return StatusCodes.Status201Created;
         }
     }
 }

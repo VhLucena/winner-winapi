@@ -1,9 +1,12 @@
+using System;
+using MongoDB.Bson;
+
 namespace Winap.Models.Interfaces
 {
     public interface IWinnerDatabaseSettings
     {
-        string WinnerCollectionName { get; set; }
-        string ConnectionString { get; set; }
-        string DatabaseName { get; set; }
+        String CollectionName { get; set; }
+        String ConnectionString { get; set; }
+        String DatabaseName { get; set; }
     }
 }

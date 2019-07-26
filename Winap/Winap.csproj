@@ -15,6 +15,7 @@
 
     <ItemGroup>
       <Compile Remove="Winap.Tests\**" />
+      <Compile Remove="Exceptions\PersonAlreadyExistsException.cs" />
     </ItemGroup>
 
     <ItemGroup>

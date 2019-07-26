@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Winap", "Winap.csproj", "{B99F9785-E873-4518-96FC-F71937AE9C45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Winap.Tests", "..\Winap.Tests\Winap.Tests.csproj", "{544C30AF-90CC-4496-9542-9B3D3BE3AEB7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{B99F9785-E873-4518-96FC-F71937AE9C45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B99F9785-E873-4518-96FC-F71937AE9C45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B99F9785-E873-4518-96FC-F71937AE9C45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{544C30AF-90CC-4496-9542-9B3D3BE3AEB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{544C30AF-90CC-4496-9542-9B3D3BE3AEB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{544C30AF-90CC-4496-9542-9B3D3BE3AEB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{544C30AF-90CC-4496-9542-9B3D3BE3AEB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

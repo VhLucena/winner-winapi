@@ -1,48 +1,62 @@
-using Winap.Models.Interfaces;
-using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using Winap.Models;
+using Microsoft.AspNetCore.Http;
+using MongoDB.Driver;
+using Winap.Models.Interfaces;
 
 namespace Winap.Services
 {
     public class PersonService
     {
-        private readonly IMongoCollection<Person> _persons;
-
+        private readonly IMongoCollection<IPerson> _persons;
+        private readonly IMongoDatabase _database;
+        private readonly string _collectionName;
+        
         public PersonService(IWinnerDatabaseSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
-            var database = client.GetDatabase(settings.DatabaseName);
+            _database = client.GetDatabase(settings.DatabaseName);
 
-            _persons = database.GetCollection<Person>(settings.WinnerCollectionName);
+            _persons = _database.GetCollection<IPerson>(settings.CollectionName);
+            _collectionName = settings.CollectionName;
         }
 
-        public List<Person> GetAllPersons()
+        public List<IPerson> GetAllPersons()
         {
             return _persons.Find(person => true).ToList();
         }
 
-        public Person GetById(int id)
+        public IPerson GetPersonByDocumentNumber(string documentNumber)
         {
-            return _persons.Find(person => person.Id == id).FirstOrDefault();
+            return _persons.Find(person => person.DocumentNumber == documentNumber).FirstOrDefault();
         }
 
-        public Person Create(Person person)
+        public void Create(IPerson person)
         {
-            _persons.InsertOne(person);
-            return person;
+            try
+            {
+                _persons.InsertOne(person);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
-        public void Update(int id, Person newPerson)
+        public void Update(IFormattable id, IPerson newPerson)
         {
-            _persons.ReplaceOne(person => person.Id == id, newPerson);
+            _persons.ReplaceOne(person => person.DocumentNumber == id.ToString(), newPerson);
         }
 
-        public void Remove(int id)
+        public void Remove(IFormattable id)
         {
-            _persons.DeleteOne(person => person.Id == id);
+            _persons.DeleteOne(person => person.DocumentNumber == id.ToString());
         }
 
+        public void ClearCollection()
+        {
+            _database.DropCollection(_collectionName);
+        }
     }
 }
