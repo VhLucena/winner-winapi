@@ -1,6 +1,4 @@
 
-
-using System.Net;
 using Microsoft.AspNetCore.Http;
 using NUnit.Framework;
 using Winap.Controllers;
@@ -8,7 +6,6 @@ using Winap.Models;
 using Winap.Models.Interfaces;
 using Winap.Services;
 using Winap.Tests.Fakes;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Winap.Tests.Controllers
 {
@@ -61,5 +58,6 @@ namespace Winap.Tests.Controllers
             // Assert
             Assert.AreEqual(StatusCodes.Status400BadRequest, httpStatusCode);
         }
+        
     }
 }

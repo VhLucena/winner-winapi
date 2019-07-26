@@ -26,25 +26,32 @@ namespace Winap.Services
             return _persons.Find(person => true).ToList();
         }
 
-        public IPerson GetById(IFormattable id)
+        public IPerson GetPersonByDocumentNumber(string documentNumber)
         {
-            return _persons.Find(person => person.Id == id.ToString()).FirstOrDefault();
+            return _persons.Find(person => person.DocumentNumber == documentNumber).FirstOrDefault();
         }
 
-        public IPerson Create(IPerson person)
+        public void Create(IPerson person)
         {
-            _persons.InsertOne(person);
-            return person;
+            try
+            {
+                _persons.InsertOne(person);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         public void Update(IFormattable id, IPerson newPerson)
         {
-            _persons.ReplaceOne(person => person.Id == id.ToString(), newPerson);
+            _persons.ReplaceOne(person => person.DocumentNumber == id.ToString(), newPerson);
         }
 
         public void Remove(IFormattable id)
         {
-            _persons.DeleteOne(person => person.Id == id.ToString());
+            _persons.DeleteOne(person => person.DocumentNumber == id.ToString());
         }
 
         public void ClearCollection()
