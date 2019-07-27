@@ -5,8 +5,8 @@ namespace Winap.Models.Interfaces
 {
     public interface IWinnerDatabaseSettings
     {
-        String CollectionName { get; set; }
-        String ConnectionString { get; set; }
-        String DatabaseName { get; set; }
+        string CollectionName { get; set; }
+        string ConnectionString { get; set; }
+        string DatabaseName { get; set; }
     }
 }

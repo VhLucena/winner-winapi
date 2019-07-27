@@ -6,7 +6,7 @@ using Winap.Models.Interfaces;
 
 namespace Winap.Tests.Fakes
 {
-    public class PersonFake : IPerson
+    public class PersonFake : PersonAbstract
     {
         public PersonFake()
         {

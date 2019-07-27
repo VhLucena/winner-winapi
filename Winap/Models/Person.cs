@@ -5,7 +5,7 @@ using Winap.Models.Interfaces;
 
 namespace Winap.Models
 {
-    public class Person : IPerson
+    public class Person : PersonAbstract
     {
 
     }
