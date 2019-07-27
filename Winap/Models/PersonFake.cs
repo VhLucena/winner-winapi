@@ -4,7 +4,7 @@ using Winap.Models.Interfaces;
 // ReSharper disable All
 // ReSharper disable BuiltInTypeReferenceStyle
 
-namespace Winap.Tests.Fakes
+namespace Winap.Models
 {
     public class PersonFake : PersonAbstract
     {

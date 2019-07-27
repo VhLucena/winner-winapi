@@ -3,7 +3,6 @@ using NUnit.Framework;
 using Winap.Exceptions;
 using Winap.Models;
 using Winap.Services;
-using Winap.Tests.Fakes;
 
 namespace Winap.Tests.Services
 {
