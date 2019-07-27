@@ -19,5 +19,15 @@ namespace Winap.Exceptions
         public PersonAlreadyExistsException(string message)
             : base(message) { }
     }
+
+    public class PersonDoesNotExistException : PersonException
+    {
+        public PersonDoesNotExistException()
+            : base() { }
+
+        public PersonDoesNotExistException(string message)
+            : base(message) { }
+    }
+    
     
 }

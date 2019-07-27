@@ -1,4 +1,5 @@
 using System;
+using System.Buffers.Binary;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
@@ -8,18 +9,10 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Winap.Models.Interfaces
 {
-    public abstract class PersonAbstract : IEqualityComparer<Person>
+    public abstract class PersonAbstract
     {
-        private string _id;
         [BsonId]
-        public string Id
-        {
-            get { return _id; }
-            set
-            {
-                _id = string.Concat(DocumentType, DocumentNumber);
-            }
-        }
+        public string Id => DocumentNumber;
 
         [BsonElement("DocumentType")]
         public string DocumentType { get; set; }
@@ -80,30 +73,18 @@ namespace Winap.Models.Interfaces
         
         [BsonElement("AllowUserPhotos")]
         public bool AllowUserPhotos { get; set; }
-
-
-        public override string ToString()
+        
+        
+        public override bool Equals(object obj)
         {
-            var stringBuilder = new StringBuilder();
+            if (obj == null)
+                return false;
             
-            var properties = typeof(Person).GetProperties();
+            if (!(obj is PersonAbstract))
+                return false;
 
-            foreach (var property in properties)
-            {
-                stringBuilder.Append(property);
-            }
-
-            return stringBuilder.ToString();
-        }
-        
-        public bool Equals(Person x, Person y)
-        {
-            return x.ToString() == y.ToString();
-        }
-        
-        public int GetHashCode(Person obj)
-        {
-            return this.GetHashCode();
+            
+            return Id == ((PersonAbstract) obj).Id;
         }
     }
 }
