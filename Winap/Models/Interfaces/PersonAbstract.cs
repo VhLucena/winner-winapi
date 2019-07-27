@@ -9,6 +9,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Winap.Models.Interfaces
 {
+    [BsonKnownTypes(typeof(Person), typeof(PersonFake))]
     public abstract class PersonAbstract
     {
         [BsonId]
