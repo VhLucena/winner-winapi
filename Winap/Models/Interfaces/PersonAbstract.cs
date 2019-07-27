@@ -10,15 +10,10 @@ namespace Winap.Models.Interfaces
 {
     public abstract class PersonAbstract : IEqualityComparer<Person>
     {
-        private string _id;
         [BsonId]
         public string Id
         {
-            get { return _id; }
-            set
-            {
-                _id = string.Concat(DocumentType, DocumentNumber);
-            }
+            get { return DocumentNumber; }
         }
 
         [BsonElement("DocumentType")]
