@@ -1,11 +1,13 @@
 
+using System;
 using Microsoft.AspNetCore.Http;
 using NUnit.Framework;
 using Winap.Controllers;
 using Winap.Models;
 using Winap.Models.Interfaces;
 using Winap.Services;
-using Winap.Tests.Fakes;
+using Moq;
+using Winap.Database;
 
 namespace Winap.Tests.Controllers
 {
@@ -13,7 +15,7 @@ namespace Winap.Tests.Controllers
     public class PersonControllerTests
     {
         private PersonController _personController;
-        private PersonService _personService;
+        private Mock<IRepository<PersonAbstract, string>> _mockPersonService;
         private IWinnerDatabaseSettings _settings;
         
         [SetUp]
@@ -23,15 +25,24 @@ namespace Winap.Tests.Controllers
             {
                 DatabaseName = "Winner",
                 ConnectionString = "mongodb://localhost:27017",
-                CollectionName = "Person"
+                CollectionName = "PersonTests"
             };
 
-            _personService = new PersonService(_settings);
-            _personService.ClearCollection();
+            SetupMockPersonService();
             
-            _personController = new PersonController(_personService);
+            _personController = new PersonController(_mockPersonService.Object);
         }
-        
+
+        private void SetupMockPersonService()
+        {
+            _mockPersonService = new Mock<IRepository<PersonAbstract, string>>();
+
+            _mockPersonService.Setup(x => x.Create(It.IsAny<PersonAbstract>()));
+            _mockPersonService.Setup(x => x.Get(It.IsAny<string>())).Returns(It.IsAny<PersonAbstract>());
+            _mockPersonService.Setup(x => x.Update(It.IsAny<PersonAbstract>()));
+            _mockPersonService.Setup(x => x.Delete(It.IsAny<string>()));
+        }
+
         [Test]
         public void Should_ReturnStatusCode201Created_When_CreatingPersonForFirstTime()
         {
