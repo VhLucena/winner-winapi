@@ -1,4 +1,6 @@
+using System;
 using NUnit.Framework;
+using Winap.Exceptions;
 using Winap.Models;
 using Winap.Services;
 using Winap.Tests.Fakes;
@@ -36,7 +38,42 @@ namespace Winap.Tests.Services
             var personRead = _personService.Get(person.Id);
             
             // Assert
-            Assert.IsTrue((person.Equals(personRead)));
+            Assert.IsTrue(person.Equals(personRead));
+        }
+
+        [Test]
+        public void ShouldThrowException_When_PersonAlreadyExists()
+        {
+            // Arrange
+            var person = new PersonFake();
+            
+            // Act / Assert
+            _personService.Create(person);
+            
+            try
+            {
+                _personService.Create(person);
+            }
+            catch (PersonAlreadyExistsException)
+            {
+                Assert.Pass();
+            }
+            
+            Assert.Fail();
+        }
+
+        [Test]
+        public void Should_RemovePersonSuccessfully_When_PersonExists()
+        {
+            // Arrange
+            var person = new PersonFake();
+            
+            // Act
+            _personService.Create(person);
+            _personService.Remove(person.Id);
+            
+            // Assert
+            Assert.IsNull(_personService.Get(person.Id));
         }
     }
 }

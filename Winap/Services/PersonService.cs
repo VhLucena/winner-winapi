@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using MongoDB.Driver;
 using Winap.Database;
+using Winap.Exceptions;
 using Winap.Models;
 using Winap.Models.Interfaces;
 
@@ -30,10 +31,9 @@ namespace Winap.Services
             {
                 _persons.InsertOne(person);
             }
-            catch (Exception e)
+            catch (MongoWriteException)
             {
-                Console.WriteLine(e);
-                throw;
+                throw new PersonAlreadyExistsException();
             }
         }
 
