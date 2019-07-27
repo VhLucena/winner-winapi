@@ -39,12 +39,18 @@ namespace Winap.Services
 
         public void Update(PersonAbstract newPerson)
         {
-            _persons.ReplaceOne(person => person.Id == newPerson.Id, newPerson);
+            var result = _persons.ReplaceOne(person => person.Id == newPerson.Id, newPerson);
+            
+            if(result.MatchedCount == 0)
+                throw new PersonDoesNotExistException();
         }
 
         public void Remove(string id)
         {
-            _persons.DeleteOne(person => person.Id == id);
+            var result = _persons.DeleteOne(person => person.Id == id);
+            
+            if(result.DeletedCount == 0)
+                throw new PersonDoesNotExistException();
         }
 
         public List<PersonAbstract> GetAll()
