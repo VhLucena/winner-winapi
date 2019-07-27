@@ -1,11 +1,10 @@
 
-*/.idea
+# Compiled Files
 */obj/
 */bin/
 
-
 # JetBrains Rider
-.idea/
+*/.idea
 *.sln.iml
 
 */Winap.sln.DotSettings.user
