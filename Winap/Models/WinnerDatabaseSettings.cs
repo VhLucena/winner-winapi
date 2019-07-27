@@ -5,8 +5,8 @@ namespace Winap.Models
 {
     public class WinnerDatabaseSettings : IWinnerDatabaseSettings
     {
-        public String CollectionName { get; set; }
-        public String ConnectionString { get; set; }
-        public String DatabaseName { get; set; }
+        public string CollectionName { get; set; }
+        public string ConnectionString { get; set; }
+        public string DatabaseName { get; set; }
     }
 }

@@ -25,15 +25,15 @@ namespace Winap.Controllers
         
         // GET: winapi/person/all
         [HttpGet("all")]
-        public  ActionResult<List<IPerson>> GetPersons()
+        public  ActionResult<List<PersonAbstract>> GetAllPersons()
         {
-            return _personService.GetAllPersons();
+            return _personService.GetAll();
         }
         
         
         // CREATE: winapi/person
-        [HttpPost()] 
-        public int CreatePerson(IPerson person)
+        [HttpPost] 
+        public int CreatePerson(PersonAbstract person)
         {
             try
             {

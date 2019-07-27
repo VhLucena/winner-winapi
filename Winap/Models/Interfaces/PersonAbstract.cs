@@ -8,74 +8,85 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Winap.Models.Interfaces
 {
-    public abstract class IPerson : IEqualityComparer<IPerson>
+    public abstract class PersonAbstract : IEqualityComparer<Person>
     {
+        private string _id;
         [BsonId]
-        public String DocumentNumber { get; set; }
+        public string Id
+        {
+            get { return _id; }
+            set
+            {
+                _id = string.Concat(DocumentType, DocumentNumber);
+            }
+        }
+
+        [BsonElement("DocumentType")]
+        public string DocumentType { get; set; }
         
+        [BsonElement("DocumentNumber")]
+        public string DocumentNumber { get; set; }
+
         [BsonElement("FullName")]
-        public String FullName { get; set; }
+        public string FullName { get; set; }
 
         [BsonElement("Email")]
-        public String Email { get; set; }
+        public string Email { get; set; }
         
         [BsonElement("BirthDay")]
         public DateTime Birthday { get; set; }
         
         [BsonElement("PhoneNumber")]
-        public Int64 PhoneNumber { get; set; }
+        public long PhoneNumber { get; set; }
 
         [BsonElement("CEP")]
-        public String Cep { get; set; }
-        
-        [BsonElement("DocumentType")]
-        public String DocumentType { get; set; }
+        public string Cep { get; set; }
 
         [BsonElement("Street")]
-        public String Street { get; set; }
+        public string Street { get; set; }
         
         [BsonElement("NumberOfHome")]
-        public Int32 NumberOfHome { get; set; }
+        public int NumberOfHome { get; set; }
         
         [BsonElement("ComplementAddress")]
-        public String ComplementAddress { get; set; }
+        public string ComplementAddress { get; set; }
 
         [BsonElement("Neighborhood")] 
-        public String Neighborhood { get; set; }
+        public string Neighborhood { get; set; }
 
         [BsonElement("City")]
-        public String City { get; set; }
+        public string City { get; set; }
 
         [BsonElement("State")]
-        public String State { get; set; }
+        public string State { get; set; }
         
         [BsonElement("Country")]
-        public String Country { get; set; }
+        public string Country { get; set; }
         
         [BsonElement("IsDeficient")]
-        public Boolean IsDeficient { get; set; }
+        public bool IsDeficient { get; set; }
         
         [BsonElement("EmergencyContactName")]
-        public String EmergencyContactName { get; set; }
+        public string EmergencyContactName { get; set; }
         
         [BsonElement("EmergencyContactPhone")]
-        public Int64 EmergencyContactPhone { get; set; }
+        public long EmergencyContactPhone { get; set; }
         
         [BsonElement("EmergencyContactEmail")]
-        public String EmergencyContactEmail { get; set; }
+        public string EmergencyContactEmail { get; set; }
         
         [BsonElement("Password")]
-        public String Password { get; set; }
+        public string Password { get; set; }
         
         [BsonElement("AllowUserPhotos")]
-        public Boolean AllowUserPhotos { get; set; }
+        public bool AllowUserPhotos { get; set; }
 
 
         public override string ToString()
         {
             var stringBuilder = new StringBuilder();
             
-            var properties = typeof(IPerson).GetProperties();
+            var properties = typeof(Person).GetProperties();
 
             foreach (var property in properties)
             {
@@ -85,12 +96,12 @@ namespace Winap.Models.Interfaces
             return stringBuilder.ToString();
         }
         
-        public bool Equals(IPerson x, IPerson y)
+        public bool Equals(Person x, Person y)
         {
             return x.ToString() == y.ToString();
         }
         
-        public int GetHashCode(IPerson obj)
+        public int GetHashCode(Person obj)
         {
             return this.GetHashCode();
         }

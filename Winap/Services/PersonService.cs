@@ -2,13 +2,15 @@ using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using MongoDB.Driver;
+using Winap.Database;
+using Winap.Models;
 using Winap.Models.Interfaces;
 
 namespace Winap.Services
 {
-    public class PersonService
+    public class PersonService : IRepository<PersonAbstract, string>
     {
-        private readonly IMongoCollection<IPerson> _persons;
+        private readonly IMongoCollection<PersonAbstract> _persons;
         private readonly IMongoDatabase _database;
         private readonly string _collectionName;
         
@@ -17,21 +19,12 @@ namespace Winap.Services
             var client = new MongoClient(settings.ConnectionString);
             _database = client.GetDatabase(settings.DatabaseName);
 
-            _persons = _database.GetCollection<IPerson>(settings.CollectionName);
+            _persons = _database.GetCollection<PersonAbstract>(settings.CollectionName);
             _collectionName = settings.CollectionName;
         }
 
-        public List<IPerson> GetAllPersons()
-        {
-            return _persons.Find(person => true).ToList();
-        }
-
-        public IPerson GetPersonByDocumentNumber(string documentNumber)
-        {
-            return _persons.Find(person => person.DocumentNumber == documentNumber).FirstOrDefault();
-        }
-
-        public void Create(IPerson person)
+     
+        public void Create(PersonAbstract person)
         {
             try
             {
@@ -44,14 +37,29 @@ namespace Winap.Services
             }
         }
 
-        public void Update(IFormattable id, IPerson newPerson)
+        public void Update(PersonAbstract newPerson)
         {
-            _persons.ReplaceOne(person => person.DocumentNumber == id.ToString(), newPerson);
+            _persons.ReplaceOne(person => person.Id == newPerson.Id, newPerson);
         }
 
-        public void Remove(IFormattable id)
+        public void Remove(string id)
         {
-            _persons.DeleteOne(person => person.DocumentNumber == id.ToString());
+            _persons.DeleteOne(person => person.Id == id);
+        }
+
+        public List<PersonAbstract> GetAll()
+        {
+            return _persons.Find(person => true).ToList();
+        }
+
+        public PersonAbstract Get(string id)
+        {
+            return _persons.Find(person => person.Id == id).FirstOrDefault();
+        }
+        
+        public void Delete(string id)
+        {
+            _persons.DeleteOne(person => person.Id == id);
         }
 
         public void ClearCollection()

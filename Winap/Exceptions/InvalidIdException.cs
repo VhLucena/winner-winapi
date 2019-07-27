@@ -9,7 +9,7 @@ namespace Winap.Exceptions
             
         }
 
-        public InvalidIdException(String message)
+        public InvalidIdException(string message)
             : base(message)
         {
             

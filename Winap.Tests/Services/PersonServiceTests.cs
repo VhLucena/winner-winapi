@@ -33,7 +33,7 @@ namespace Winap.Tests.Services
             
             // Act
             _personService.Create(person);
-            var personRead = _personService.GetPersonByDocumentNumber(person.DocumentNumber);
+            var personRead = _personService.Get(person.Id);
             
             // Assert
             Assert.IsTrue((person.Equals(personRead)));
