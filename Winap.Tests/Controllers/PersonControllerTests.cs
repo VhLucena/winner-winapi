@@ -8,6 +8,8 @@ using Winap.Models.Interfaces;
 using Winap.Services;
 using Moq;
 using Winap.Database;
+using Winap.Exceptions;
+using Winap.Tests.Fakes;
 
 namespace Winap.Tests.Controllers
 {
@@ -16,18 +18,10 @@ namespace Winap.Tests.Controllers
     {
         private PersonController _personController;
         private Mock<IRepository<PersonAbstract, string>> _mockPersonService;
-        private IWinnerDatabaseSettings _settings;
-        
+
         [SetUp]
         public void Setup()
         {
-            _settings = new WinnerDatabaseSettings
-            {
-                DatabaseName = "Winner",
-                ConnectionString = "mongodb://localhost:27017",
-                CollectionName = "PersonTests"
-            };
-
             SetupMockPersonService();
             
             _personController = new PersonController(_mockPersonService.Object);
@@ -38,6 +32,7 @@ namespace Winap.Tests.Controllers
             _mockPersonService = new Mock<IRepository<PersonAbstract, string>>();
 
             _mockPersonService.Setup(x => x.Create(It.IsAny<PersonAbstract>()));
+            _mockPersonService.Setup(x => x.Create(It.IsAny<PersonDuplicated>())).Throws<PersonAlreadyExistsException>();
             _mockPersonService.Setup(x => x.Get(It.IsAny<string>())).Returns(It.IsAny<PersonAbstract>());
             _mockPersonService.Setup(x => x.Update(It.IsAny<PersonAbstract>()));
             _mockPersonService.Setup(x => x.Delete(It.IsAny<string>()));
@@ -60,10 +55,9 @@ namespace Winap.Tests.Controllers
         public void Should_ReturnStatusCode400_When_CreatingPersonAlreadyExists()
         {
             // Arrange
-            var person = new PersonFake();
+            var person = new PersonDuplicated();
             
             // Action
-            _personController.CreatePerson(person);
             var httpStatusCode = _personController.CreatePerson(person);
             
             // Assert
