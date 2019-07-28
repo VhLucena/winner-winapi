@@ -1,7 +1,7 @@
-using System;
 using NUnit.Framework;
 using Winap.Exceptions;
 using Winap.Models;
+using Winap.Models.Fakes;
 using Winap.Services;
 
 namespace Winap.Tests.Services
