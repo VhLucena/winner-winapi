@@ -1,7 +1,11 @@
+using System;
 using NUnit.Framework;
+using Winap.Database;
 using Winap.Exceptions;
 using Winap.Models;
+using Winap.Models.Enum;
 using Winap.Models.Fakes;
+using Winap.Models.Interfaces;
 using Winap.Services;
 
 namespace Winap.Tests.Services
@@ -9,20 +13,21 @@ namespace Winap.Tests.Services
     [TestFixture]
     public class PersonServiceTests
     {
-        private PersonService _personService;
-        private WinnerDatabaseSettings _settings;
+        private IRepository<PersonAbstract, string> _personService;
+        private DatabaseSettings _settings;
         
         [SetUp]
         public void Setup()
         {
-            _settings = new WinnerDatabaseSettings
+            _settings = new DatabaseSettings
             {
                 DatabaseName = "Winner",
                 ConnectionString = "mongodb://localhost:27017",
                 CollectionName = "PersonTest"
             };
 
-            _personService = new PersonService(_settings);
+            _personService = new RepositoryFactory<PersonAbstract, string>().Make(ServiceTypes.PersonService, _settings);
+
             _personService.ClearCollection();
         }
 
@@ -60,7 +65,7 @@ namespace Winap.Tests.Services
             
             // Act
             _personService.Create(person);
-            _personService.Remove(person.Id);
+            _personService.Delete(person.Id);
             
             // Assert
             Assert.IsNull(_personService.Get(person.Id));
@@ -73,7 +78,7 @@ namespace Winap.Tests.Services
             var person = new PersonFake();
             
             // Act / Assert
-            Assert.Throws<PersonDoesNotExistException>((() => _personService.Remove(person.Id)));
+            Assert.Throws<PersonDoesNotExistException>((() => _personService.Delete(person.Id)));
         }
         
         [Test]

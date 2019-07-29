@@ -51,11 +51,11 @@ namespace Winap.Models.Interfaces
             if (obj == null)
                 return false;
             
-            if (!(obj is PersonAbstract))
+            if (!(obj is EventAbstract))
                 return false;
 
             
-            return Id == ((PersonAbstract) obj).Id;
+            return Id == ((EventAbstract) obj).Id;
         }
     }
 }

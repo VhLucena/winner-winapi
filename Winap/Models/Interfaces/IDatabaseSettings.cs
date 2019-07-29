@@ -3,7 +3,7 @@ using MongoDB.Bson;
 
 namespace Winap.Models.Interfaces
 {
-    public interface IWinnerDatabaseSettings
+    public interface IDatabaseSettings
     {
         string CollectionName { get; set; }
         string ConnectionString { get; set; }

@@ -13,6 +13,7 @@ namespace Winap.Database
         void Update(T entity);
         
         void Delete(K id);
-        
+
+        void ClearCollection();
     }
 }
