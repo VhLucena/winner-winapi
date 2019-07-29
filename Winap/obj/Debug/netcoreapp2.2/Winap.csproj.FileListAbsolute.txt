@@ -1,0 +1,15 @@
+/Users/viniciuslucena/Work/winner-winapi/Winap/bin/Debug/netcoreapp2.2/Winap.dll.config
+/Users/viniciuslucena/Work/winner-winapi/Winap/bin/Debug/netcoreapp2.2/Winap.deps.json
+/Users/viniciuslucena/Work/winner-winapi/Winap/bin/Debug/netcoreapp2.2/Winap.runtimeconfig.json
+/Users/viniciuslucena/Work/winner-winapi/Winap/bin/Debug/netcoreapp2.2/Winap.runtimeconfig.dev.json
+/Users/viniciuslucena/Work/winner-winapi/Winap/bin/Debug/netcoreapp2.2/Winap.dll
+/Users/viniciuslucena/Work/winner-winapi/Winap/bin/Debug/netcoreapp2.2/Winap.pdb
+/Users/viniciuslucena/Work/winner-winapi/Winap/obj/Debug/netcoreapp2.2/Winap.csprojAssemblyReference.cache
+/Users/viniciuslucena/Work/winner-winapi/Winap/obj/Debug/netcoreapp2.2/Winap.csproj.CoreCompileInputs.cache
+/Users/viniciuslucena/Work/winner-winapi/Winap/obj/Debug/netcoreapp2.2/Winap.RazorAssemblyInfo.cache
+/Users/viniciuslucena/Work/winner-winapi/Winap/obj/Debug/netcoreapp2.2/Winap.RazorAssemblyInfo.cs
+/Users/viniciuslucena/Work/winner-winapi/Winap/obj/Debug/netcoreapp2.2/Winap.AssemblyInfoInputs.cache
+/Users/viniciuslucena/Work/winner-winapi/Winap/obj/Debug/netcoreapp2.2/Winap.AssemblyInfo.cs
+/Users/viniciuslucena/Work/winner-winapi/Winap/obj/Debug/netcoreapp2.2/Winap.RazorTargetAssemblyInfo.cache
+/Users/viniciuslucena/Work/winner-winapi/Winap/obj/Debug/netcoreapp2.2/Winap.dll
+/Users/viniciuslucena/Work/winner-winapi/Winap/obj/Debug/netcoreapp2.2/Winap.pdb

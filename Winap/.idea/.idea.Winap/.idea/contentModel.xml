@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/.nuget/packages/nunit3testadapter/3.11.0/build/netcoreapp1.0/nunit.engine.netstandard.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/nunit3testadapter/3.11.0/build/netcoreapp1.0/NUnit3.TestAdapter.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/nunit3testadapter/3.11.0/build/netcoreapp1.0/NUnit3.TestAdapter.pdb" t="Include" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.1/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.1/resharper-host/local/Transient/ReSharperHost/v191/SolutionCaches/_Winap.-1336212951.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="app.config" t="Include" />
+      <e p="appsettings.Development.json" t="Include" />
+      <e p="appsettings.json" t="Include" />
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="Controllers" t="Include">
+        <e p="PersonController.cs" t="Include" />
+      </e>
+      <e p="Database" t="Include">
+        <e p="IRepository.cs" t="Include" />
+        <e p="IRepositoryFactory.cs" t="Include" />
+        <e p="RepositoryFactory.cs" t="Include" />
+      </e>
+      <e p="Exceptions" t="Include">
+        <e p="EventException.cs" t="Include" />
+        <e p="InvalidIdException.cs" t="Include" />
+        <e p="PersonException.cs" t="Include" />
+      </e>
+      <e p="Models" t="Include">
+        <e p="DatabaseSettings.cs" t="Include" />
+        <e p="Enum" t="Include">
+          <e p="ServiceTypes.cs" t="Include" />
+        </e>
+        <e p="Event.cs" t="Include" />
+        <e p="Fakes" t="Include">
+          <e p="EventFake.cs" t="Include" />
+          <e p="PersonFake.cs" t="Include" />
+        </e>
+        <e p="Interfaces" t="Include">
+          <e p="EventAbstract.cs" t="Include" />
+          <e p="IDatabaseSettings.cs" t="Include" />
+          <e p="PersonAbstract.cs" t="Include" />
+        </e>
+        <e p="Person.cs" t="Include" />
+        <e p="WinapiContext.cs" t="Include" />
+      </e>
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="netcoreapp2.2" t="Include">
+            <e p="Winap.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Program.cs" t="Include" />
+      <e p="Properties" t="Include">
+        <e p="launchSettings.json" t="Include" />
+      </e>
+      <e p="Services" t="Include">
+        <e p="EventService.cs" t="Include" />
+        <e p="PersonService.cs" t="Include" />
+      </e>
+      <e p="Startup.cs" t="Include" />
+      <e p="Winap.csproj" t="IncludeRecursive" />
+      <e p="Winap.sln" t="IncludeFlat" />
+    </e>
+    <e p="$PROJECT_DIR$/../Winap.Tests" t="IncludeRecursive">
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="Controllers" t="Include">
+        <e p="PersonControllerTests.cs" t="Include" />
+      </e>
+      <e p="Fakes" t="Include">
+        <e p="PersonDuplicated.cs" t="Include" />
+      </e>
+      <e p="Models" t="Include" />
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="netcoreapp2.2" t="Include">
+            <e p="Winap.Tests.AssemblyInfo.cs" t="Include" />
+            <e p="Winap.Tests.Program.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Services" t="Include">
+        <e p="EventServiceTests.cs" t="Include" />
+        <e p="PersonServiceTests.cs" t="Include" />
+      </e>
+      <e p="Winap.Tests.csproj" t="IncludeRecursive" />
+    </e>
+  </component>
+</project>
