@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Winap.Database;
 using Winap.Exceptions;
 using Winap.Models;
 using Winap.Models.Interfaces;
@@ -16,9 +17,9 @@ namespace Winap.Controllers
     [ApiController]
     public class PersonController : ControllerBase
     {
-        private readonly PersonService _personService;
+        private readonly IRepository<PersonAbstract, string> _personService;
 
-        public PersonController(PersonService personService)
+        public PersonController(IRepository<PersonAbstract, string> personService)
         {
             _personService = personService;
         }
