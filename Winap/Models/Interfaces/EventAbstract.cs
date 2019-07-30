@@ -46,7 +46,7 @@ namespace Winap.Models.Interfaces
         public string Regulation { get; set; }
 
         
-        public override bool Equals(object obj)
+        public bool IsEqual(object obj)
         {
             if (obj == null)
                 return false;

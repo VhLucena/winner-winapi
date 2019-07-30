@@ -72,7 +72,7 @@ namespace Winap.Models.Interfaces
         public bool AllowUserPhotos { get; set; }
         
         
-        public override bool Equals(object obj)
+        public bool IsEqual(object obj)
         {
             if (obj == null)
                 return false;
