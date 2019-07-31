@@ -22,11 +22,11 @@ namespace Winap
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<WinnerDatabaseSettings>(
-                Configuration.GetSection(nameof(WinnerDatabaseSettings)));
+            services.Configure<DatabaseSettings>(
+                Configuration.GetSection(nameof(DatabaseSettings)));
 
-            services.AddSingleton<IWinnerDatabaseSettings>(sp =>
-                sp.GetRequiredService<IOptions<WinnerDatabaseSettings>>().Value);
+            services.AddSingleton<IDatabaseSettings>(sp =>
+                sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
 
             services.AddSingleton<PersonService>();
             

@@ -15,7 +15,7 @@ namespace Winap.Services
         private readonly IMongoDatabase _database;
         private readonly string _collectionName;
         
-        public PersonService(IWinnerDatabaseSettings settings)
+        public PersonService(IDatabaseSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
             _database = client.GetDatabase(settings.DatabaseName);

@@ -10,12 +10,12 @@ namespace Winap.Tests.Services
     public class PersonServiceTests
     {
         private PersonService _personService;
-        private WinnerDatabaseSettings _settings;
+        private DatabaseSettings _settings;
         
         [SetUp]
         public void Setup()
         {
-            _settings = new WinnerDatabaseSettings
+            _settings = new DatabaseSettings
             {
                 DatabaseName = "Winner",
                 ConnectionString = "mongodb://localhost:27017",
