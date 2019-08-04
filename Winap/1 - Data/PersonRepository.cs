@@ -6,11 +6,11 @@ namespace Winap.Database
 {
     public class PersonRepository : IRepository<PersonAbstract, string>
     {
-        private readonly IMongoCollection<PersonAbstract> _persons;
-     
-        public PersonRepository(IMongoCollection<PersonAbstract> persons)
+        private readonly IMongoCollection<PersonAbstract> _mongo;
+
+        public PersonRepository(IMongoConnection<PersonAbstract> mongoConnection)
         {
-            _persons = persons;
+            _mongo = mongoConnection.Collection;
         }
         
         public List<PersonAbstract> GetAll()
@@ -25,7 +25,7 @@ namespace Winap.Database
 
         public void Create(PersonAbstract entity)
         {
-            _persons.InsertOne(entity);
+            _mongo.InsertOne(entity);
         }
 
         public void Update(PersonAbstract entity)

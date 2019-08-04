@@ -15,26 +15,23 @@ namespace Winap.Controllers
 {
     [Route("winapi/[controller]")]
     [ApiController]
-    public class PersonController : ControllerBase
+    public class PersonController : WinnerController<PersonAbstract>
     {
-        private readonly IRepository<PersonAbstract, string> _personService;
+        private readonly IService<PersonAbstract> _personService;
 
-        public PersonController(IRepository<PersonAbstract, string> personService)
+        public PersonController(IService<PersonAbstract> personService)
         {
             _personService = personService;
         }
         
         // GET: winapi/person/all
-        [HttpGet("all")]
-        public  ActionResult<List<PersonAbstract>> GetAllPersons()
+        public override ActionResult<List<PersonAbstract>> GetAll()
         {
             return _personService.GetAll();
         }
-        
-        
+
         // CREATE: winapi/person
-        [HttpPost] 
-        public int CreatePerson(PersonAbstract person)
+        public override int Create(PersonAbstract person)
         {
             try
             {

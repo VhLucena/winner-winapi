@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Winap.Database;
 using Winap.Models;
 using Winap.Models.Interfaces;
 using Winap.Services;
@@ -27,7 +28,10 @@ namespace Winap
 
             services.AddSingleton<IDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
-
+            
+            
+            services.AddSingleton<PersonRepository>();
+            
             services.AddSingleton<PersonService>();
             
             services.AddMvc()
