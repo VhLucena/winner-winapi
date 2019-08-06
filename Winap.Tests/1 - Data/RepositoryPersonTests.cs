@@ -13,12 +13,12 @@ namespace Winap.Tests.Repositories
     [TestFixture]
     public class RepositoryPersonTests
     {
-        private Mock<IMongoCollection<PersonAbstract>> _mockPersonRepository;
+        private Mock<IMongoConnection<PersonAbstract>> _mockPersonRepository;
         private PersonRepository _personRepository;
 
         private void SetupMockHappyPath()
         {
-            _mockPersonRepository = new Mock<IMongoCollection<PersonAbstract>>();
+            _mockPersonRepository = new Mock<IMongoConnection<PersonAbstract>>();
             _mockPersonRepository.Setup( m => m.InsertOne(It.IsAny<PersonAbstract>(), null, CancellationToken.None));
 
             _personRepository = new PersonRepository(_mockPersonRepository.Object);
