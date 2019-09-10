@@ -1,10 +1,8 @@
 using System;
-using System.Threading;
 using MongoDB.Driver;
 using Moq;
 using NUnit.Framework;
 using Winap.Database;
-using Winap.Models;
 using Winap.Models.Fakes;
 using Winap.Models.Interfaces;
 
@@ -13,13 +11,13 @@ namespace Winap.Tests.Repositories
     [TestFixture]
     public class RepositoryPersonTests
     {
-        private Mock<IMongoConnection<PersonAbstract>> _mockPersonRepository;
+        private Mock<IMongoCollection<PersonAbstract>> _mockPersonRepository;
         private PersonRepository _personRepository;
 
         private void SetupMockHappyPath()
         {
-            _mockPersonRepository = new Mock<IMongoConnection<PersonAbstract>>();
-            //_mockPersonRepository.Setup( m => m.InsertOne(It.IsAny<PersonAbstract>(), null, CancellationToken.None));
+            _mockPersonRepository = new Mock<IMongoCollection<PersonAbstract>>();
+            _mockPersonRepository.Setup(x => x.InsertOne(It.IsAny<PersonAbstract>(), null, default));
 
             _personRepository = new PersonRepository(_mockPersonRepository.Object);
         }
@@ -41,6 +39,8 @@ namespace Winap.Tests.Repositories
             {
                 Assert.Fail();
             }
+            
+            _mockPersonRepository.Verify(x => x.InsertOne(personFake, null, default), Times.Once);
             
             Assert.Pass();
         }

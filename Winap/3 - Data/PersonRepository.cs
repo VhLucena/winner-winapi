@@ -8,9 +8,9 @@ namespace Winap.Database
     {
         private readonly IMongoCollection<PersonAbstract> _mongo;
 
-        public PersonRepository(IMongoConnection<PersonAbstract> mongoConnection)
+        public PersonRepository(IMongoCollection<PersonAbstract> mongo)
         {
-            _mongo = mongoConnection.Collection;
+            _mongo = mongo;
         }
         
         public List<PersonAbstract> GetAll()
