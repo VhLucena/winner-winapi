@@ -6,6 +6,7 @@ using Moq;
 using Winap.Database;
 using Winap.Exceptions;
 using Winap.Models.Fakes;
+using Winap.Services;
 using Winap.Tests.Fakes;
 
 namespace Winap.Tests.Controllers
@@ -14,7 +15,7 @@ namespace Winap.Tests.Controllers
     public class PersonControllerTests
     {
         private PersonController _personController;
-        private Mock<IRepository<PersonAbstract, string>> _mockPersonService;
+        private Mock<IService<PersonAbstract>> _mockPersonService;
 
         [SetUp]
         public void Setup()
@@ -26,7 +27,7 @@ namespace Winap.Tests.Controllers
 
         private void SetupMockPersonService()
         {
-            _mockPersonService = new Mock<IRepository<PersonAbstract, string>>();
+            _mockPersonService = new Mock<IService<PersonAbstract>>();
 
             _mockPersonService.Setup(x => x.Create(It.IsAny<PersonAbstract>()));
             _mockPersonService.Setup(x => x.Create(It.IsAny<PersonDuplicated>())).Throws<PersonAlreadyExistsException>();
@@ -42,7 +43,7 @@ namespace Winap.Tests.Controllers
             var person = new PersonFake();
             
             // Action
-            var httpStatusCode = _personController.CreatePerson(person);
+            var httpStatusCode = _personController.Create(person);
             
             // Assert
             Assert.AreEqual(StatusCodes.Status201Created, httpStatusCode);
@@ -55,7 +56,7 @@ namespace Winap.Tests.Controllers
             var person = new PersonDuplicated();
             
             // Action
-            var httpStatusCode = _personController.CreatePerson(person);
+            var httpStatusCode = _personController.Create(person);
             
             // Assert
             Assert.AreEqual(StatusCodes.Status400BadRequest, httpStatusCode);

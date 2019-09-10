@@ -3,7 +3,7 @@ using Winap.Models.Interfaces;
 
 namespace Winap.Models
 {
-    public class WinnerDatabaseSettings : IWinnerDatabaseSettings
+    public class DatabaseSettings : IDatabaseSettings
     {
         public string CollectionName { get; set; }
         public string ConnectionString { get; set; }
