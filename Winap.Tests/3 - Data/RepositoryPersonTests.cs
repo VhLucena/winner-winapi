@@ -19,7 +19,7 @@ namespace Winap.Tests.Repositories
         private void SetupMockHappyPath()
         {
             _mockPersonRepository = new Mock<IMongoConnection<PersonAbstract>>();
-            _mockPersonRepository.Setup( m => m.InsertOne(It.IsAny<PersonAbstract>(), null, CancellationToken.None));
+            //_mockPersonRepository.Setup( m => m.InsertOne(It.IsAny<PersonAbstract>(), null, CancellationToken.None));
 
             _personRepository = new PersonRepository(_mockPersonRepository.Object);
         }

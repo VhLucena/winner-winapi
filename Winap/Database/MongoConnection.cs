@@ -4,7 +4,7 @@ namespace Winap.Models.Interfaces
 {
     public class MongoConnection<T> : IMongoConnection<T>
     {
-        public IMongoCollection<T> Collection { get; }
+        public override IMongoCollection<T> Collection { get; }
         
         public MongoConnection(IDatabaseSettings settings)
         {

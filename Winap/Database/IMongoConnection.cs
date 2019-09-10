@@ -2,8 +2,8 @@ using MongoDB.Driver;
 
 namespace Winap.Models.Interfaces
 {
-    public interface IMongoConnection<T>
-    { 
-        IMongoCollection<T> Collection { get; }
+    public abstract class IMongoConnection<T>
+    {
+        public abstract IMongoCollection<T> Collection { get; }
     }
 }
